@@ -1,0 +1,36 @@
+CalcSuiteValue
+-megnézi, hogy dobható-e
+-megkapja, hogy a színből milyen kártyái vannak egy egy bittel
+-megkapja, hogy melyik kártyától induljon a számolás
+
+kiszámolja hogy egy adott kártyától indulva hányszor kell passzoljon hogy minden kártyája elfogyjon az adott színből
+
+7,9,asz van a kezében, nyolcastól indulva
+passz, 9, passz, passz, passz, passz, asz, 7
+ez 5 passz, ezt adja vissza
+
+(ugyan ez asz-tol indítva csak 1 lesz)
+
+CalcValue
+-amikor egy gépi játékos sorra kerül, az összes lapjára meghívódik ez a függvény
+-megkapja a játékos lapjait
+
+azt az értéket adja vissza, egy adott lapra, hogy mennyi a passzértéke (CalcSuiteValue számolja)
+
+a kezdés pillanatában:
+-minden lapra kiszámolja a passzértéket, saját magával indítva minden színre és ezeket összeadja
+-ha kevés passz jön össze, az a jobb, ezért Result = 100- Result
+
+ez után közösen folytatódik a függvény (kezdés és nem kezdés eset)
+
+pl makk hetessel lett meghívva -> érték 7, megnézzük az összes makk lapot, ez lesz m (7,8,kiraly -> m = 01000011) [true,true,false,false,false,false,true,false]
+
+ha csak egy lapja van:
+akkor, ha nincs kiválasztva lap (kezdés fázisba vagyunk) akkor ezt nem lenne jó kijátszani, tehát a result értéket csökkentjük 1-el
+	ha van már kezdőlap,
+	megnézzük, milyen messze van a kezdőlaptól, és minél messzeb lesz, annál jobb (a királynál a heteshez nézve 7 lesz, ami nagyon jó)
+
+a resulthoz végül hozzáadja, hogy az adott lapnál hány passz van, hogy minél hamarabb a végére érhessen
+végül visszaadja a resultot
+
+
